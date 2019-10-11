@@ -6,8 +6,9 @@ public class classTest {
     public static final String TEST_CORRECT_EDGE = "OK. Тест по сторонам пройден";
     public static final String TEST_CORRECT_PERIMETER = "OK.Тест по периметру пройден";
     public static final String TEST_CORRECT_AREA = "OK.Тест по площади пройден";
-    public static final String TEST_INCORRECT_PERIMETER = "ОШИБКА! Неверно просчитан периметр";
-    public static final String TEST_INCORRECT_AREA = "ОШИБКА! Неверно просчитана площадь";
+    public static final String TEST_INCORRECT_PERIMETER = "ОК(ОШИБОЧНЫЙ ТЕСТ)! Неверно просчитан периметр";
+    public static final String TEST_INCORRECT_AREA = "ОК(ОШИБОЧНЫЙ ТЕСТ)! Неверно просчитана площадь";
+    public static final String TEST_INCORRECT_EDGES = "ОШИБКА(ОШИБОЧНЫЙ ТЕСТ)! Невозможно создать треугольник с такими параметрами";
     public static final String TEST_CORRECT = "OK.Тест пройден";
 
     private final float PRECISION = 0.00001f;
@@ -32,14 +33,18 @@ public class classTest {
     private String TriangleData;
 
 
+    public boolean Get_Test_Correction()
+    {
+        return TestCorrection;
+    }
+
     public String Start_Test()
     {
         try {
             Triangle MyTrig = new Triangle(testA, testB, testC);
-
             switch (TestType) {
                 case ePerimeterTester: {
-                    if (testPerimeter == MyTrig.Get_Perimeter())
+                    if (testPerimeter == MyTrig.Get_Perimeter() && TestCorrection)
                         return TEST_CORRECT_PERIMETER;
                     else {
                         return TEST_INCORRECT_PERIMETER;
@@ -47,7 +52,7 @@ public class classTest {
                 }
                 case eAreaTester: {
                     float trigArea = MyTrig.Get_Area();
-                    if (Math.abs(testArea - MyTrig.Get_Area()) < PRECISION)
+                    if (Math.abs(testArea - MyTrig.Get_Area()) < PRECISION && TestCorrection)
                         return TEST_CORRECT_AREA;
                     else {
                         return TEST_INCORRECT_AREA;
@@ -60,7 +65,10 @@ public class classTest {
         }
         catch(Exception ex)
         {
-            return ex.toString();
+            if (!TestCorrection)
+                return TEST_CORRECT_EDGE;
+            else
+                return TEST_INCORRECT_EDGES;
         }
 
         return "МЫ ЗДЕСЬ БЫТЬ НЕ ДОЛЖНЫ";
