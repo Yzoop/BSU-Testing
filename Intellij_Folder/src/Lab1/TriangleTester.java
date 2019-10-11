@@ -5,7 +5,8 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class TriangleTester {
-    public static void main(String args[])
+
+    public static void Start_Testing()
     {
         String Line;
         Scanner streamReader;
@@ -22,5 +23,11 @@ public class TriangleTester {
         {
             System.out.printf("Ошибка чтения файла:%s\n", ex);
         }
+    }
+
+    public static void main(String args[])
+    {
+        Start_Testing();
+
     }
 }

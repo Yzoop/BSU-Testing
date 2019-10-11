@@ -10,12 +10,14 @@ public class Triangle {
 
     private float Square = -1;
 
+
     public enum eTrigType
     {
         equilateral,
         isosceles,
         versatile
     }
+
 
     private boolean Ok_Size(final short _a, final short _b, final short _c)
     {
@@ -27,6 +29,7 @@ public class Triangle {
 
         return false;
     }
+
 
     public eTrigType Get_Type()
     {
@@ -42,6 +45,7 @@ public class Triangle {
             return eTrigType.versatile;
     }
 
+
     public short Get_Perimeter()
     {
         if (Perimeter == -1)
@@ -52,13 +56,13 @@ public class Triangle {
         return Perimeter;
     }
 
+
     public float Get_Square()
     {
         if (Square == -1)
         {
             Square = (float)Math.sqrt(Get_Perimeter() * (Get_Perimeter() - A) * (Get_Perimeter() - B) * (Get_Perimeter() - C));
         }
-
         return Square;
     }
 
