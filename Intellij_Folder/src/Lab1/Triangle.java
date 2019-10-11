@@ -65,7 +65,8 @@ public class Triangle {
     {
         if (Square == -1)
         {
-            Square = (float)Math.sqrt(Get_Perimeter() * (Get_Perimeter() - A) * (Get_Perimeter() - B) * (Get_Perimeter() - C));
+            float HalfPerimeter = (float)Get_Perimeter() / 2;
+            Square = (float)Math.sqrt(HalfPerimeter * (HalfPerimeter - A) * (HalfPerimeter - B) * (HalfPerimeter - C));
         }
         return Square;
     }

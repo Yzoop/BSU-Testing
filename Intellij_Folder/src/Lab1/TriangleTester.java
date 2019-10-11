@@ -2,6 +2,7 @@ package Lab1;
 
 import com.sun.source.tree.ClassTree;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Scanner;
@@ -14,11 +15,12 @@ public class TriangleTester {
         Scanner streamReader;
         try
         {
-            streamReader = new Scanner("test.txt");
+            File file = new File("test.txt");
+            streamReader = new Scanner(file);
             while(streamReader.hasNext())
             {
-                Line = streamReader.nextLine();
-
+                classTest MyClassTest = new classTest(streamReader.nextLine()) ;
+                System.out.println(MyClassTest.Start_Test());
             }
         }
         catch(Exception ex)

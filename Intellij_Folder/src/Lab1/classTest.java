@@ -9,6 +9,8 @@ public class classTest {
     public static final String TEST_INCORRECT_PERIMETER = "ОШИБКА! Неверно просчитан периметр";
     public static final String TEST_INCORRECT_AREA = "ОШИБКА! Неверно просчитана площадь";
     public static final String TEST_CORRECT = "OK.Тест пройден";
+
+    private final float PRECISION = 0.00001f;
     //Finished statics for test
 
     private short FirstEdge, SecondEdge, ThirdEdge;
@@ -44,7 +46,8 @@ public class classTest {
                     }
                 }
                 case eAreaTester: {
-                    if (testArea == MyTrig.Get_Area())
+                    float trigArea = MyTrig.Get_Area();
+                    if (Math.abs(testArea - MyTrig.Get_Area()) < PRECISION)
                         return TEST_CORRECT_AREA;
                     else {
                         return TEST_INCORRECT_AREA;
@@ -77,7 +80,6 @@ public class classTest {
         testA = Short.parseShort(TestLinePart[2]);
         testB = Short.parseShort(TestLinePart[3]);
         testC = Short.parseShort(TestLinePart[4]);
-        testPerimeter = Short.parseShort(TestLinePart[5]);
 
         switch (TestLinePart[1])
         {
@@ -86,9 +88,11 @@ public class classTest {
                 break;
             case "1":
                 TestType = enTestType.ePerimeterTester;
+                testPerimeter = Short.parseShort(TestLinePart[5]);
                 break;
             case "2":
                 TestType = enTestType.eAreaTester;
+                testArea = Float.parseFloat(TestLinePart[5]);
                 break;
             default:
                 throw new Exception("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERROR_TEST_FORMAT");
