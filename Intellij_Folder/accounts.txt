@@ -1,0 +1,12 @@
+LOG:182335
+PAS:111111
+---
+LOG:chicka13
+PAS:qwerty
+---
+LOG:SuperStar
+PAS:1a2b34
+---
+LOG:11111
+PAS:11111
+---
